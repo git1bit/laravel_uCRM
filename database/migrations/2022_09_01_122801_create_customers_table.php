@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('temple')->nullable();
             $table->string('s_name1');
             $table->string('f_name1');
-            $table->string('s_ruby1');
-            $table->string('f_ruby1');
+            $table->string('s_ruby1')->nullable();
+            $table->string('f_ruby1')->nullable();
             $table->string('s_name2')->nullable();
             $table->string('f_name2')->nullable();
             $table->string('s_ruby2')->nullable();

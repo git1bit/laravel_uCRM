@@ -13,7 +13,7 @@ class StoreCustomerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,25 @@ class StoreCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'm_name' => ['required', 'max:20'],
+            'tel1' => ['required', 'numeric'],
+            'tel2' => ['numeric'],
+            'postcode' => ['required', 'max:7'],
+            'address1' => ['required', 'max:255'],
+            'address2' => ['max:255'],
+            'temple' => ['max:255'],
+            's_name1' => ['required', 'max:20'],
+            'f_name1' => ['required', 'max:20'],
+            's_ruby1' => ['required', 'regex:/^[ァ-ヾ]+$/u', 'max:50'],
+            'f_ruby1' => ['required', 'regex:/^[ァ-ヾ]+$/u', 'max:50'],
+            's_name2' => ['max:20'],
+            'f_name2' => ['max:20'],
+            's_ruby2' => ['regex:/^[ァ-ヾ]+$/u', 'max:20'],
+            'f_ruby2' => ['regex:/^[ァ-ヾ]+$/u', 'max:20'],
+            's_name3' => ['max:20'],
+            'f_name3' => ['max:20'],
+            's_ruby3' => ['regex:/^[ァ-ヾ]+$/u', 'max:20'],
+            'f_ruby3' => ['regex:/^[ァ-ヾ]+$/u', 'max:20']
         ];
     }
 }

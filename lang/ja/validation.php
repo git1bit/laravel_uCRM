@@ -154,8 +154,15 @@ return [
     */
 
     'attributes' => [
-        'title' => '件名',
-        'content' => '本文'
+        'm_name' => '担当者',
+        'tel1' => '電話番号1',
+        'tel2' => '電話番号2',
+        'postcode' => '郵便番号',
+        'address1' => '住所1',
+        's_name1' => '姓',
+        'f_name1' => '名',
+        's_ruby1' => '姓カナ',
+        'f_ruby1' => '名カナ',
     ],
 
 ];
