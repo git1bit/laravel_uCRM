@@ -46,8 +46,8 @@ import { Inertia } from '@inertiajs/inertia';
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label class="leading-7 text-sm text-gray-600">電話番号</label><br>
-                                    1 <div id="tel1" class="w-3/5 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.tel1 }}</div>
-                                    2 <div id="tel2" class="w-3/5 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.tel2 }}</div>
+                                    <div id="tel1" class="w-2/5 inline-block border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.tel1 }}</div>
+                                    <div v-if="customer.tel2" id="tel2" class="w-2/5 inline-block border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.tel2 }}</div>
                                   </div>
                                 </div>
                                 <div class="p-2 w-1/2">
@@ -65,13 +65,13 @@ import { Inertia } from '@inertiajs/inertia';
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="address2" class="leading-7 text-sm text-gray-600">番地</label><br>
-                                    <div id="address2" class="w-full border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.address2 }}</div>
+                                    <div id="address2" class="w-full border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"><span v-if="customer.address2">{{ customer.address2 }}</span>　</div>
                                   </div>
                                 </div>
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="temple" class="leading-7 text-sm text-gray-600">霊園・寺院名</label><br>
-                                    <div id="temple" class="w-full border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.temple }}</div>
+                                    <div id="temple" class="w-full border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"><span v-if="customer.temple">{{ customer.temple }}</span>　</div>
                                   </div>
                                 </div>
                               </div>
@@ -81,148 +81,142 @@ import { Inertia } from '@inertiajs/inertia';
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label class="leading-7 text-sm text-gray-600">お名前1</label><br>
-                                    <div id="s_name1" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_name1 }}</div>
-                                    <div id="f_name1" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.f_name1 }}</div> 様
+                                    <div id="s_name1" class="w-4/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_name1 }} {{ customer.f_name1 }} 様</div>
                                   </div>
                                 </div>
                                 <div class="p-2 -mt-4 w-full">
                                   <div class="relative">
                                     <label class="leading-7 text-sm text-gray-600">フリガナ1</label><br>
-                                    <div id="s_ruby1" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_suby1 }}</div>
-                                    <div id="f_ruby1" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.f_ruby1 }}</div> 様
+                                    <div id="s_ruby1" class="w-4/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_ruby1 }} {{ customer.f_ruby1 }} 様</div>
                                   </div>
                                 </div>
-                                <div class="p-2 my-2 w-full">
+                                <div v-if="customer.f_name2" class="p-2 my-2 w-full">
                                   <div class="relative">
                                     <label class="leading-7 text-sm text-gray-600">お名前2</label><br>
-                                    <div id="s_name2" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_name2 }}</div>
-                                    <div id="f_name2" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.f_name2 }}</div> 様
+                                    <div id="s_name2" class="w-4/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_name2 }} {{ customer.f_name2 }} 様</div>
                                   </div>
                                 </div>
-                                <div class="p-2 -mt-6 w-full">
+                                <div v-if="customer.f_ruby2" class="p-2 -mt-6 w-full">
                                   <div class="relative">
                                     <label class="leading-7 text-sm text-gray-600">フリガナ2</label><br>
-                                    <div id="s_ruby2" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_ruby2 }}</div>
-                                    <div id="f_ruby2" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.f_ruby2 }}</div> 様
+                                    <div id="s_ruby2" class="w-4/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_ruby2 }} {{ customer.f_ruby2 }} 様</div>
                                   </div>
                                 </div>
-                                <div class="p-2 my-2 w-full">
+                                <div v-if="customer.f_name3" class="p-2 my-2 w-full">
                                   <div class="relative">
                                     <label class="leading-7 text-sm text-gray-600">お名前3</label><br>
-                                    <div id="s_name3" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_name3 }}</div>
-                                    <div id="f_name3" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.f_name3 }}</div> 様
+                                    <div id="s_name3" class="w-4/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_name3 }} {{ customer.f_name3 }} 様</div>
                                   </div>
                                 </div>
-                                <div class="p-2 -mt-6 w-full">
+                                <div v-if="customer.f_ruby3" class="p-2 -mt-6 w-full">
                                   <div class="relative">
                                     <label class="leading-7 text-sm text-gray-600">フリガナ3</label><br>
-                                    <div id="s_ruby3" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_ruby3 }}</div>
-                                    <div id="f_ruby3" class="w-2/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.f_ruby3 }}</div> 様
+                                    <div id="s_ruby3" class="w-4/5 m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.s_ruby3 }} {{ customer.f_ruby3 }} 様</div>
                                   </div>
                                 </div>
                               </div>
                             </div>
                             <div class="w-full">
                               <table class="w-full">
-                                <thead>
+                                <thead class=" bg-indigo-200">
                                   <tr>
-                                    <th class="w-1/4">
+                                    <th class="border border-gray-500 w-1/4 p-2 font-normal">
                                       墓
                                     </th>
-                                    <th class="w-1/4">
+                                    <th class="border border-gray-500 w-1/4 p-2 font-normal">
                                       改修工事
                                     </th>
-                                    <th class="w-1/4">
+                                    <th class="border border-gray-500 w-1/4 p-2 font-normal">
                                       仏壇
                                     </th>
-                                    <th class="w-1/4">
+                                    <th class="border border-gray-500 w-1/4 p-2 font-normal">
                                       仏具
                                     </th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>
-                                      <div id="grave1" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.grave1 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      <span v-if="customer.grave1">{{ customer.grave1 }}</span>　
                                     </td>
-                                    <td>
-                                      <div id="repair1" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.repair1 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.repair1 }}
                                     </td>
-                                    <td>
-                                      <div id="baltar1" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.baltar1 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.baltar1 }}
                                     </td>
-                                    <td>
-                                      <div id="bafittings1" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.bafittings1 }}</div>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <div id="grave2" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.grave2 }}</div>
-                                    </td>
-                                    <td>
-                                      <div id="repair2" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.repair2 }}</div>
-                                    </td>
-                                    <td>
-                                      <div id="baltar2" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.baltar2 }}</div>
-                                    </td>
-                                    <td>
-                                      <div id="bafittings2" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.bafittings2 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.bafittings1 }}
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td>
-                                      <div id="grave3" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.grave3 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.grave2 }}
                                     </td>
-                                    <td>
-                                      <div id="repair3" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.repair3 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.repair2 }}
                                     </td>
-                                    <td>
-                                      <div id="baltar3" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.baltar3 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.baltar2 }}
                                     </td>
-                                    <td>
-                                      <div id="bafittings3" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.bafittings3 }}</div>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <div id="grave4" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.grave4 }}</div>
-                                    </td>
-                                    <td>
-                                      <div id="repair4" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.repair4 }}</div>
-                                    </td>
-                                    <td>
-                                      <div id="baltar4" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.baltar4 }}</div>
-                                    </td>
-                                    <td>
-                                      <div id="bafittings4" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.bafittings4 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.bafittings2 }}
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td>
-                                      <div id="grave5" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.grave5 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.grave3 }}
                                     </td>
-                                    <td>
-                                      <div id="repair5" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.repair5 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.repair3 }}
                                     </td>
-                                    <td>
-                                      <div id="baltar5" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.baltar5 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.baltar3 }}
                                     </td>
-                                    <td>
-                                      <div id="bafittings5" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.bafittings5 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.bafittings3 }}
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td>
-                                      <div id="grave6" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.grave6 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.grave4 }}
                                     </td>
-                                    <td>
-                                      <div id="repair6" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.repair6 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.repair4 }}
                                     </td>
-                                    <td>
-                                      <div id="baltar6" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.baltar6 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.baltar4 }}
                                     </td>
-                                    <td>
-                                      <div id="bafittings6" class="w-full m-1 border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.bafittings6 }}</div>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.bafittings4 }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.grave5 }}
+                                    </td>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.repair5 }}
+                                    </td>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.baltar5 }}
+                                    </td>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.bafittings5 }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.grave6 }}
+                                    </td>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.repair6 }}
+                                    </td>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.baltar6 }}
+                                    </td>
+                                    <td class=" bg-gray-50 border border-gray-500 p-2">
+                                      {{ customer.bafittings6 }}
                                     </td>
                                   </tr>
                                 </tbody>
