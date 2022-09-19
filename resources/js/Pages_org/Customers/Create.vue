@@ -3,74 +3,78 @@
   import { Head } from '@inertiajs/inertia-vue3';
   import { reactive } from 'vue';
   import { Inertia } from '@inertiajs/inertia'
-  import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+  import { Core as YubinBangoCore } from "yubinbango-core2";
 
-  const props = defineProps({
-    customer: Object
+  defineProps({
+    errors: Object
   })
 
   const form = reactive({
-    id: props.customer.id,
-    m_name: props.customer.m_name,
-    tel1: props.customer.tel1,
-    tel2: props.customer.tel2,
-    postcode: props.customer.postcode,
-    address1: props.customer.address1,
-    address2: props.customer.address2,
-    temple: props.customer.temple,
-    s_name1: props.customer.s_name1,
-    f_name1: props.customer.f_name1,
-    s_ruby1: props.customer.s_ruby1,
-    f_ruby1: props.customer.f_ruby1,
-    s_name2: props.customer.s_name2,
-    f_name2: props.customer.f_name2,
-    s_ruby2: props.customer.s_ruby2,
-    f_ruby2: props.customer.f_ruby2,
-    s_name3: props.customer.s_name3,
-    f_name3: props.customer.f_name3,
-    s_ruby3: props.customer.s_ruby3,
-    f_ruby3: props.customer.f_ruby3,
-    grave1: props.customer.grave1,
-    repair1: props.customer.repair1,
-    baltar1: props.customer.baltar1,
-    bafittings1: props.customer.bafittings1,
-    grave2: props.customer.grave2,
-    repair2: props.customer.repair2,
-    baltar2: props.customer.baltar2,
-    bafittings2: props.customer.bafittings2,
-    grave3: props.customer.grave3,
-    repair3: props.customer.repair3,
-    baltar3: props.customer.baltar3,
-    bafittings3: props.customer.bafittings3,
-    grave4: props.customer.grave4,
-    repair4: props.customer.repair4,
-    baltar4: props.customer.baltar4,
-    bafittings4: props.customer.bafittings4,
-    grave5: props.customer.grave5,
-    repair5: props.customer.repair5,
-    baltar5: props.customer.baltar5,
-    bafittings5: props.customer.bafittings5,
-    grave6: props.customer.grave6,
-    repair6: props.customer.repair6,
-    baltar6: props.customer.baltar6,
-    bafittings6: props.customer.bafittings6,
-    memo: props.customer.memo
+    m_name: null,
+    tel1: null,
+    tel2: null,
+    postcode: null,
+    address1: null,
+    address2: null,
+    temple: null,
+    s_name1: null,
+    f_name1: null,
+    s_ruby1: null,
+    f_ruby1: null,
+    s_name2: null,
+    f_name2: null,
+    s_ruby2: null,
+    f_ruby2: null,
+    s_name3: null,
+    f_name3: null,
+    s_ruby3: null,
+    f_ruby3: null,
+    grave1: null,
+    repair1: null,
+    baltar1: null,
+    bafitting1: null,
+    grave2: null,
+    repair2: null,
+    baltar2: null,
+    bafitting2: null,
+    grave3: null,
+    repair3: null,
+    baltar3: null,
+    bafitting3: null,
+    grave4: null,
+    repair4: null,
+    baltar4: null,
+    bafitting4: null,
+    grave5: null,
+    repair5: null,
+    baltar5: null,
+    bafitting5: null,
+    grave6: null,
+    repair6: null,
+    baltar6: null,
+    bafitting6: null,
+    memo: null,
   })
 
-  const updateCustomer = id => {
-    Inertia.put(route('customers.update', {customer: id}), form, {
-      onBefore: () => confirm('本当に更新しますか？')
+  const fetchAddress = () => {
+    new YubinBangoCore(String(form.postcode), (value) => {
+      //console.log(value)
+      form.address1 = value.region + value.locality + value.street
     })
+  }
+
+  const storeCustomer = () => {
+    Inertia.post('/customers', form)
   }
   </script>
   
   <template>
-      <Head title="お客様編集" />
+      <Head title="お客様登録" />
   
       <BreezeAuthenticatedLayout>
           <template #header>
               <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                  お客様編集
+                  お客様登録
               </h2>
           </template>
   
@@ -78,14 +82,11 @@
               <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                   <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                       <div class="p-6 bg-white border-b border-gray-200">
-                        <BreezeValidationErrors class="mb-4" />
                         <section class="text-gray-600 body-font relative">
-                          <form @submit.prevent="updateCustomer(form.id)">
+                          <form @submit.prevent="storeCustomer">
                           <div class="container px-5 py-8 mx-auto">
                             <div class="w-full">
-                              <div class="w-1/4 flex flex-wrap">
-                                <label for="id" class="leading-7 text-sm text-gray-600">NO</label>
-                                <div id="id" class="w-full border-b border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.id }}</div>
+                              <div class="w-1/4 flex flex-wrap right-0">
                                 <label for="m_name" class="leading-7 text-sm text-gray-600">担当者</label>
                                 <input type="text" id="m_name" name="m_name" v-model="form.m_name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                               </div>
@@ -103,7 +104,7 @@
                                 <div class="p-2 w-1/2">
                                   <div class="relative">
                                     <label for="postcode" class="leading-7 text-sm text-gray-600">郵便番号</label><br>
-                                    <input type="text" id="postcode" name="postcode" v-model="form.postcode" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="postcode" name="postcode" @change="fetchAddress" v-model="form.postcode" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
                                 <div class="p-2 w-full">
@@ -193,7 +194,7 @@
                                 <tbody>
                                   <tr>
                                     <td>
-                                      <input type="text" id="grave1" name="grave1" v-model="form.grave1" class="w-full m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                      <input type="text" id="grave1" name="grave1" v-model="form.s_grave1" class="w-full m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     </td>
                                     <td>
                                       <input type="text" id="repair1" name="repair1" v-model="form.repair1" class="w-full m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -284,7 +285,7 @@
                                   </div>
                                 </div>
                                 <div class="p-2 w-full">
-                                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">更新</button>
+                                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">確認</button>
                                 </div>
                             </div>
                           </div>

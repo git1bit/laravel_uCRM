@@ -29,7 +29,7 @@ class StoreCustomerRequest extends FormRequest
             'tel2' => ['nullable', 'numeric'],
             'postcode' => ['required', 'max:7'],
             'address1' => ['required', 'max:255'],
-            'address2' => ['nullable', 'max:255'],
+            'address2' => ['max:255'],
             'temple' => ['nullable', 'max:255'],
             's_name1' => ['required', 'max:20'],
             'f_name1' => ['required', 'max:20'],
