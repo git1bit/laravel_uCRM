@@ -2,12 +2,9 @@
   import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
   import { Head } from '@inertiajs/inertia-vue3';
   import { reactive } from 'vue';
-  import { Inertia } from '@inertiajs/inertia'
+  import { Inertia } from '@inertiajs/inertia';
+  import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
   import { Core as YubinBangoCore } from "yubinbango-core2";
-
-  defineProps({
-    errors: Object
-  })
 
   const form = reactive({
     m_name: null,
@@ -82,6 +79,7 @@
               <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                   <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                       <div class="p-6 bg-white border-b border-gray-200">
+                        <BreezeValidationErrors class="mb-4" />
                         <section class="text-gray-600 body-font relative">
                           <form @submit.prevent="storeCustomer">
                           <div class="container px-5 py-8 mx-auto">
@@ -285,7 +283,7 @@
                                   </div>
                                 </div>
                                 <div class="p-2 w-full">
-                                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">確認</button>
+                                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録</button>
                                 </div>
                             </div>
                           </div>

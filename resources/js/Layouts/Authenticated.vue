@@ -28,7 +28,7 @@ const showingNavigationDropdown = ref(false);
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                    管理トップ
                                 </BreezeNavLink>
                                 <BreezeNavLink :href="route('customers.index')" :active="route().current('cutomers.index')">
                                     お客様検索
@@ -54,7 +54,7 @@ const showingNavigationDropdown = ref(false);
 
                                     <template #content>
                                         <BreezeDropdownLink :href="route('logout')" method="post" as="button">
-                                            Log Out
+                                            ログアウト
                                         </BreezeDropdownLink>
                                     </template>
                                 </BreezeDropdown>
@@ -77,7 +77,7 @@ const showingNavigationDropdown = ref(false);
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <BreezeResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                            管理トップ
                         </BreezeResponsiveNavLink>
                         <BreezeResponsiveNavLink :href="route('customers.index')" :active="route().current('customers.index')">
                             お客様検索
@@ -93,7 +93,7 @@ const showingNavigationDropdown = ref(false);
 
                         <div class="mt-3 space-y-1">
                             <BreezeResponsiveNavLink :href="route('logout')" method="post" as="button">
-                                Log Out
+                                ログアウト
                             </BreezeResponsiveNavLink>
                         </div>
                     </div>

@@ -6,8 +6,6 @@ use Inertia\Inertia;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\CustomerController;
 
-
-
 Route::resource('customers', CustomerController::class)
 ->middleware(['auth', 'verified']);
 

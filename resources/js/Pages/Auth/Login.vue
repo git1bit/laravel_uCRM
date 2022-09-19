@@ -35,31 +35,31 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <BreezeLabel for="email" value="Email" />
+                <BreezeLabel for="email" value="E-mail" />
                 <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
                 <BreezeInputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="mt-4">
-                <BreezeLabel for="password" value="Password" />
+                <BreezeLabel for="password" value="パスワード" />
                 <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
                 <BreezeInputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="block mt-4">
+            <!--<div class="block mt-4">
                 <label class="flex items-center">
                     <BreezeCheckbox name="remember" v-model:checked="form.remember" />
                     <span class="ml-2 text-sm text-gray-600">Remember me</span>
                 </label>
-            </div>
+            </div>-->
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <!--<Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     Forgot your password?
-                </Link>
+                </Link>-->
 
                 <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+                    ログイン
                 </BreezeButton>
             </div>
         </form>
