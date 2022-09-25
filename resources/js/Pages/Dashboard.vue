@@ -8,7 +8,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
 
     <BreezeAuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-white leading-tight -my-3">
                 顧客管理システム
             </h2>
         </template>

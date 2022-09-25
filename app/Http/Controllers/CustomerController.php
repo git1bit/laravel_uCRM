@@ -17,19 +17,46 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
+        $tel = $request->get('tel');
+        $sname = $request->get('sname');
+        $fname = $request->get('fname');
+        $sruby = $request->get('sruby');
+        $fruby = $request->get('fruby');
+        $post = $request->get('post');
+        $address = $request->get('address');
+        $temple = $request->get('temple');
+        $grave = $request->get('grave');
+        $repair = $request->get('repair');
+        $baltar = $request->get('balter');
+        $bafittings = $request->get('bafittings');
+        $memo = $request->get('memo');
+        $pg = 100;
+        
+        
+        // if($request->get('tel')) {
+
+        // }
+
+        // dd($tel, $sname, $fname, $sruby, $memo);
         //$getTest = Customer::select('id', 's_name1', 'f_name1', 'tel1', 'address1', 'temple')->get();
         //$getPaginate = Customer::select('id', 's_name1', 'f_name1', 'tel1', 'address1', 'temple')->paginate(50);
 
         //dd($getTest, $getPaginate);
 
-        $customers = Customer::searchCustomers($request->search)
-        ->select('id', 's_name1', 'f_name1', 'tel1', 'address1', 'temple')->paginate(50);
+        $customers = Customer::searchCustomers($tel,$sname,$fname,$sruby,$fruby,$post,$address,$temple,$grave,$repair,$baltar,$bafittings,$memo,$pg)
+        // $customers = Customer::where("s_name1", "like", "%$sname%")
+        // ->where("tel1", "like", "%$tel%")
+        ->select('id', 's_name1', 'f_name1', 'tel1', 'address1', 'temple')->paginate($pg);
+        // $customers = Customer::searchTemples($request->temple)
+        // ->select('id', 's_name1', 'f_name1', 'tel1', 'address1', 'temple')->paginate(20);
+        // $request ->session() -> put('tel','$tel');
+        // list($query, $pg) = $this->searchCustomers();
+        // dd($pg);
 
-        //dd($customers);
+        // dd($customers);
 
         return Inertia::render('Customers/Index',[
             'customers' => $customers
-
         ]);
     }
 

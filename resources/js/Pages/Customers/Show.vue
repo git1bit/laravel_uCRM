@@ -21,24 +21,27 @@ import { Inertia } from '@inertiajs/inertia';
   
       <BreezeAuthenticatedLayout>
           <template #header>
-              <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+              <h2 class="font-semibold text-xl text-white leading-tight -my-3">
                   お客様情報詳細
               </h2>
           </template>
   
-          <div class="py-12">
+          <div class="py-12 dspy0">
               <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                   <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                       <div class="p-6 bg-white border-b border-gray-200">
                         <section class="text-gray-600 body-font relative">
                           <div class="container px-5 py-8 mx-auto">
                             <div class="w-full">
-                              <div class="w-1/4 flex flex-wrap right-0">
+                              <div class="w-1/4 block float-right mr-20">
+                                <label for="id" class="leading-7 text-sm text-gray-600">NO</label>
+                                <div id="id" class="w-full border-b border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ customer.id }}</div>
                                 <label for="m_name" class="leading-7 text-sm text-gray-600">担当者</label>
                                 <div id="m_name" class="w-full border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   {{ customer.m_name }}
                                 </div>
                               </div>
+                              <div class="clear-both"></div>
                             </div>
                             <!--<div class="lg:w-1/2 md:w-2/3 mx-auto">-->
                             <div class="w-1/2 inline-block clear-both">
@@ -230,10 +233,10 @@ import { Inertia } from '@inertiajs/inertia';
                                     <div v-else-if="customer.memo" id="memo" v-html="nl2br(customer.memo)" class="w-full overflow-y-auto border-b-2 border-dotted border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></div>
                                   </div>
                                 </div>
-                                <div v-if="$page.props.auth.user.admin === 1" class="p-2 w-full">
+                                <div v-if="$page.props.auth.user.admin === 1" class="dspnn p-2 w-full">
                                   <Link as="button" :href="route('customers.edit', {customer: customer.id})" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">編集</Link>
                                 </div>
-                                <div v-if="$page.props.auth.user.admin === 1" class="mt-5 p-2 w-full">
+                                <div v-if="$page.props.auth.user.admin === 1" class="dspnn mt-5 p-2 w-full">
                                   <button @click="deleteCustomer(customer.id)" class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">削除</button>
                                 </div>
                             </div>
@@ -246,3 +249,13 @@ import { Inertia } from '@inertiajs/inertia';
       </BreezeAuthenticatedLayout>
   </template>
   
+<css>
+  @media print {
+      .dspnn {
+          display:none;
+      }
+      .dspy0 {
+        margin-top: -3rem;
+      }
+  }
+</css>
