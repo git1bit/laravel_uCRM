@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Customer as ModelsCustomer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Console\Logger\ConsoleLogger;
@@ -9,92 +10,298 @@ use Symfony\Component\Console\Logger\ConsoleLogger;
 class Customer extends Model
 {
     use HasFactory;
-    public function sagasuCustomers($tel,$sname,$fname,$sruby)
-    {
-        return $tel->where('tel1', 'like', $tel . '%' )
-        ->orWhere('tel2', 'like', $tel . '%' );
-
-        dd($tel);
-        
-    }
     public function scopeSearchCustomers($query,$tel,$sname,$fname,$sruby,$fruby,$post,$address,$temple,$grave,$repair,$baltar,$bafittings,$memo,$pg,$input = null)
     {
         // dd($input,$query,$tel,$sname,$fname,$sruby,$fruby,$post,$address,$temple,$grave,$repair,$baltar,$bafittings,$memo);
         
+        session()->forget(['pg','tel','sname','fname','sruby','fruby','post','address','temple','grave','repair','baltar','bafittings','memo']);
+
+        $teld = Customer::select('tel1','tel2')->get();
 
         if(!empty($query)){
             if(!empty($tel)) {
                 if(Customer::where('tel1', 'like', '%'.$tel.'%')
+                ->where('tel2', 'like', '%'.$tel.'%')
+                ->exists())
+                    {
+                        $query->where('tel2', 'like', '%'.$tel.'%')
+                        ->where('tel1', 'like', '%'.$tel.'%');
+                        session(['tel' => $tel]);
+                    }
+                if(Customer::where('tel1', 'like', '%'.$tel.'%')
                     ->exists())
                     {
                         $query->where('tel1', 'like', '%'.$tel.'%');
+                        session(['tel' => $tel]);
                     }
-                // if(Customer::where('tel2', 'like', '%'.$tel.'%')
-                //     ->exists())
-                //     {
-                //         $query->where('tel2', 'like', '%'.$tel.'%');
-                //     }
+                if(Customer::where('tel2', 'like', '%'.$tel.'%')
+                    ->exists())
+                    {
+                        $query->where('tel2', 'like', '%'.$tel.'%');
+                        session(['tel' => $tel]);
+                    }
+                    if(Customer::orwhere('tel1', 'like', '%'.$tel.'%')
+                    ->orwhere('tel2', 'like', '%'.$tel.'%')
+                    ->exists())
+                        {
+                            $query->orwhere('tel2', 'like', '%'.$tel.'%')
+                            ->orwhere('tel1', 'like', '%'.$tel.'%');
+                            session(['tel' => $tel]);
+                        }
             }
             if(!empty($sname)) {
-                $query -> where('s_name1', 'like', '%'.$sname.'%');
+                if(Customer::where('s_name1', 'like', '%'.$sname.'%')
+                    ->exists())
+                    {
+                        $query->where('s_name1', 'like', '%'.$sname.'%');
+                        session(['sname' => $sname]);
+                    }
+                if(Customer::where('s_name2', 'like', '%'.$sname.'%')
+                    ->exists())
+                    {
+                        $query->where('s_name2', 'like', '%'.$sname.'%');
+                        session(['sname' => $sname]);
+                    }
+                    if(Customer::where('s_name3', 'like', '%'.$sname.'%')
+                        ->exists())
+                        {
+                            $query->where('s_name3', 'like', '%'.$sname.'%');
+                            session(['sname' => $sname]);
+                        }
+                // if(Customer::orwhere('s_name1', 'like', '%'.$sname.'%')
+                //     ->orwhere('s_name2', 'like', '%'.$sname.'%')
+                //     ->orwhere('s_name3', 'like', '%'.$sname.'%')
+                //     ->exists())
+                //         {
+                //             $query->orwhere('s_name1', 'like', '%'.$sname.'%')
+                //             ->orwhere('s_name2', 'like', '%'.$sname.'%')
+                //             ->orwhere('s_name3', 'like', '%'.$sname.'%');
+                //             session(['sname' => $sname]);
+                //         }
             }
-            if(!empty($fname)) {
-                $query -> where('f_name1', 'like', '%'.$fname.'%');
-            }
-            if(!empty($sruby)) {
-                $query -> where('s_ruby1', 'like', '%'.$sruby.'%');
-            }
-            if(!empty($fruby)) {
-                $query -> where('f_ruby1', 'like', '%'.$fruby.'%');
-            }
+            // if(!empty($sname)) {
+            //     $query -> where('s_name1', 'like', '%'.$sname.'%');
+            //     session(['sname' => $sname]);
+            // }
+            // if(!empty($fname)) {
+            //     $query -> where('f_name1', 'like', '%'.$fname.'%');
+            //     session(['fname' => $fname]);
+            // }
+            // if(!empty($sruby)) {
+            //     $query -> where('s_ruby1', 'like', '%'.$sruby.'%');
+            //     session(['sruby' => $sruby]);
+            // }
+            // if(!empty($fruby)) {
+            //     $query -> where('f_ruby1', 'like', '%'.$fruby.'%');
+            //     session(['fruby' => $fruby]);
+            // }
             if(!empty($post)) {
                 $query -> where('postcode', 'like', '%'.$post.'%');
+                session(['post' => $post]);
             }
             if(!empty($address)) {
                 $query -> where('address1', 'like', '%'.$address.'%');
+                session(['address' => $address]);
             }
             if(!empty($temple)) {
+                session(['temple' => $temple]);
                 $query -> where('temple', 'like', '%'.$temple.'%');
             }
             if(!empty($grave)) {
-                $query -> where('grave1', 'like', '%'.$grave.'%')
-                -> orwhere('grave2', 'like', '%'.$grave.'%')
-                -> orwhere('grave3', 'like', '%'.$grave.'%')
-                -> orwhere('grave4', 'like', '%'.$grave.'%')
-                -> orwhere('grave5', 'like', '%'.$grave.'%')
-                -> orwhere('grave6', 'like', '%'.$grave.'%');
-            }
-            if(!empty($repair)) {
-                $query -> where('repair1', 'like', '%'.$repair.'%')
-                -> orwhere('repair2', 'like', '%'.$repair.'%')
-                -> orwhere('repair3', 'like', '%'.$repair.'%')
-                -> orwhere('repair4', 'like', '%'.$repair.'%')
-                -> orwhere('repair5', 'like', '%'.$repair.'%')
-                -> orwhere('repair6', 'like', '%'.$repair.'%');
-            }
-            if(!empty($baltar)) {
-                $query -> where('baltar1', 'like', '%'.$baltar.'%')
-                -> orwhere('baltar2', 'like', '%'.$baltar.'%')
-                -> orwhere('baltar3', 'like', '%'.$baltar.'%')
-                -> orwhere('baltar4', 'like', '%'.$baltar.'%')
-                -> orwhere('baltar5', 'like', '%'.$baltar.'%')
-                -> orwhere('baltar6', 'like', '%'.$baltar.'%');
-            }
-            if(!empty($bafittings)) {
-                $query -> where('bafittings1', 'like', '%'.$bafittings.'%')
-                -> orwhere('bafittings2', 'like', '%'.$bafittings.'%')
-                -> orwhere('bafittings3', 'like', '%'.$bafittings.'%')
-                -> orwhere('bafittings4', 'like', '%'.$bafittings.'%')
-                -> orwhere('bafittings5', 'like', '%'.$bafittings.'%')
-                -> orwhere('bafittings6', 'like', '%'.$bafittings.'%');
-            }
+                if(Customer::where('grave1', 'like', '%'.$grave.'%')
+                    ->exists())
+                    {
+                        $query -> where('grave1', 'like', '%'.$grave.'%');
+                        session(['grave' => $grave]);
+                    }
+                elseif(Customer::where('grave2', 'like', '%'.$grave.'%')
+                    ->exists())
+                    {
+                        $query -> where('grave2', 'like', '%'.$grave.'%');
+                        session(['grave' => $grave]);
+                    }
+                elseif(Customer::where('grave3', 'like', '%'.$grave.'%')
+                    ->exists())
+                    {
+                        $query -> where('grave3', 'like', '%'.$grave.'%');
+                        session(['grave' => $grave]);
+                    }
+                elseif(Customer::where('grave4', 'like', '%'.$grave.'%')
+                    ->exists())
+                    {
+                        $query -> where('grave4', 'like', '%'.$grave.'%');
+                        session(['grave' => $grave]);
+                    }
+                elseif(Customer::where('grave5', 'like', '%'.$grave.'%')
+                    ->exists())
+                    {
+                        $query -> where('grave5', 'like', '%'.$grave.'%');
+                        session(['grave' => $grave]);
+                    }
+                elseif(Customer::where('grave6', 'like', '%'.$grave.'%')
+                    ->exists())
+                    {
+                        $query -> where('grave6', 'like', '%'.$grave.'%');
+                        session(['grave' => $grave]);
+                    }
+                }
+                if(!empty($repair)) {
+                    if(Customer::where('repair1', 'like', '%'.$repair.'%')
+                        ->exists())
+                        {
+                            $query -> where('repair1', 'like', '%'.$repair.'%');
+                            session(['repair' => $repair]);
+                        }
+                    elseif(Customer::where('repair2', 'like', '%'.$repair.'%')
+                        ->exists())
+                        {
+                            $query -> where('repair2', 'like', '%'.$repair.'%');
+                            session(['repair' => $repair]);
+                        }
+                    elseif(Customer::where('repair3', 'like', '%'.$repair.'%')
+                        ->exists())
+                        {
+                            $query -> where('repair3', 'like', '%'.$repair.'%');
+                            session(['repair' => $repair]);
+                        }
+                    elseif(Customer::where('repair4', 'like', '%'.$repair.'%')
+                        ->exists())
+                        {
+                            $query -> where('repair4', 'like', '%'.$repair.'%');
+                            session(['repair' => $repair]);
+                        }
+                    elseif(Customer::where('repair5', 'like', '%'.$repair.'%')
+                        ->exists())
+                        {
+                            $query -> where('repair5', 'like', '%'.$repair.'%');
+                            session(['repair' => $repair]);
+                        }
+                    elseif(Customer::where('repair6', 'like', '%'.$repair.'%')
+                        ->exists())
+                        {
+                            $query -> where('repair6', 'like', '%'.$repair.'%');
+                            session(['repair' => $repair]);
+                        }
+                    }
+                    if(!empty($baltar)) {
+                        if(Customer::where('baltar1', 'like', '%'.$baltar.'%')
+                            ->exists())
+                            {
+                                $query -> where('baltar1', 'like', '%'.$baltar.'%');
+                                session(['baltar' => $baltar]);
+                            }
+                        elseif(Customer::where('baltar2', 'like', '%'.$baltar.'%')
+                            ->exists())
+                            {
+                                $query -> where('baltar2', 'like', '%'.$baltar.'%');
+                                session(['baltar' => $baltar]);
+                            }
+                        elseif(Customer::where('baltar3', 'like', '%'.$baltar.'%')
+                            ->exists())
+                            {
+                                $query -> where('baltar3', 'like', '%'.$baltar.'%');
+                                session(['baltar' => $baltar]);
+                            }
+                        elseif(Customer::where('baltar4', 'like', '%'.$baltar.'%')
+                            ->exists())
+                            {
+                                $query -> where('baltar4', 'like', '%'.$baltar.'%');
+                                session(['baltar' => $baltar]);
+                            }
+                        elseif(Customer::where('baltar5', 'like', '%'.$baltar.'%')
+                            ->exists())
+                            {
+                                $query -> where('baltar5', 'like', '%'.$baltar.'%');
+                                session(['baltar' => $baltar]);
+                            }
+                        elseif(Customer::where('baltar6', 'like', '%'.$baltar.'%')
+                            ->exists())
+                            {
+                                $query -> where('baltar6', 'like', '%'.$baltar.'%');
+                                session(['baltar' => $baltar]);
+                            }
+                        }
+                        if(!empty($bafittings)) {
+                            if(Customer::where('bafittings1', 'like', '%'.$bafittings.'%')
+                                ->exists())
+                                {
+                                    $query -> where('bafittings1', 'like', '%'.$bafittings.'%');
+                                    session(['bafittings' => $bafittings]);
+                                }
+                            elseif(Customer::where('bafittings2', 'like', '%'.$bafittings.'%')
+                                ->exists())
+                                {
+                                    $query -> where('bafittings2', 'like', '%'.$bafittings.'%');
+                                    session(['bafittings' => $bafittings]);
+                                }
+                            elseif(Customer::where('bafittings3', 'like', '%'.$bafittings.'%')
+                                ->exists())
+                                {
+                                    $query -> where('bafittings3', 'like', '%'.$bafittings.'%');
+                                    session(['bafittings' => $bafittings]);
+                                }
+                            elseif(Customer::where('bafittings4', 'like', '%'.$bafittings.'%')
+                                ->exists())
+                                {
+                                    $query -> where('bafittings4', 'like', '%'.$bafittings.'%');
+                                    session(['bafittings' => $bafittings]);
+                                }
+                            elseif(Customer::where('bafittings5', 'like', '%'.$bafittings.'%')
+                                ->exists())
+                                {
+                                    $query -> where('bafittings5', 'like', '%'.$bafittings.'%');
+                                    session(['bafittings' => $bafittings]);
+                                }
+                            elseif(Customer::where('bafittings6', 'like', '%'.$bafittings.'%')
+                                ->exists())
+                                {
+                                    $query -> where('bafittings6', 'like', '%'.$bafittings.'%');
+                                    session(['bafittings' => $bafittings]);
+                                }
+                            }
+            
+            // if(!empty($repair)) {
+            //     session(['repair' => $repair]);
+            //     $query -> where('repair1', 'like', '%'.$repair.'%')
+            //     -> orwhere('repair2', 'like', '%'.$repair.'%')
+            //     -> orwhere('repair3', 'like', '%'.$repair.'%')
+            //     -> orwhere('repair4', 'like', '%'.$repair.'%')
+            //     -> orwhere('repair5', 'like', '%'.$repair.'%')
+            //     -> orwhere('repair6', 'like', '%'.$repair.'%');
+            // }
+            // if(!empty($baltar)) {
+            //     session(['baltar' => $baltar]);
+            //     $query -> where('baltar1', 'like', '%'.$baltar.'%')
+            //     -> orwhere('baltar2', 'like', '%'.$baltar.'%')
+            //     -> orwhere('baltar3', 'like', '%'.$baltar.'%')
+            //     -> orwhere('baltar4', 'like', '%'.$baltar.'%')
+            //     -> orwhere('baltar5', 'like', '%'.$baltar.'%')
+            //     -> orwhere('baltar6', 'like', '%'.$baltar.'%');
+            // }
+            // if(!empty($bafittings)) {
+            //     session(['bafittings' => $bafittings]);
+            //     $query -> where('bafittings1', 'like', '%'.$bafittings.'%')
+            //     -> orwhere('bafittings2', 'like', '%'.$bafittings.'%')
+            //     -> orwhere('bafittings3', 'like', '%'.$bafittings.'%')
+            //     -> orwhere('bafittings4', 'like', '%'.$bafittings.'%')
+            //     -> orwhere('bafittings5', 'like', '%'.$bafittings.'%')
+            //     -> orwhere('bafittings6', 'like', '%'.$bafittings.'%');
+            // }
             if(!empty($memo)) {
+                session(['memo' => $memo]);
                 $query -> where('memo', 'like', '%'.$memo.'%');
             }
             if(!empty($pg)) {
-                $pg=$query->count();
+                $pga=$query->count();
+                $dba=Customer::get()->count();
+                if($pga === $dba) {
+                    session(['pg'=>25]);
+                } else {
+                    session(['pg'=>$pga]);
+                }
             }
             // dd($pg);
+            // dd($query);
 
             return $query;
             // $query->if(!empty($tel)

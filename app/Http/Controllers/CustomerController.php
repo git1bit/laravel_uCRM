@@ -27,11 +27,12 @@ class CustomerController extends Controller
         $temple = $request->get('temple');
         $grave = $request->get('grave');
         $repair = $request->get('repair');
-        $baltar = $request->get('balter');
+        $baltar = $request->get('baltar');
         $bafittings = $request->get('bafittings');
         $memo = $request->get('memo');
-        $pg = 100;
+        $pg = 25;
         
+        // dd($pg);
         
         // if($request->get('tel')) {
 
@@ -46,17 +47,37 @@ class CustomerController extends Controller
         $customers = Customer::searchCustomers($tel,$sname,$fname,$sruby,$fruby,$post,$address,$temple,$grave,$repair,$baltar,$bafittings,$memo,$pg)
         // $customers = Customer::where("s_name1", "like", "%$sname%")
         // ->where("tel1", "like", "%$tel%")
-        ->select('id', 's_name1', 'f_name1', 'tel1', 'address1', 'temple')->paginate($pg);
+        ->select('id', 's_name1', 'f_name1', 'tel1', 'address1', 'temple')->paginate(session()->get('pg'));
         // $customers = Customer::searchTemples($request->temple)
         // ->select('id', 's_name1', 'f_name1', 'tel1', 'address1', 'temple')->paginate(20);
         // $request ->session() -> put('tel','$tel');
         // list($query, $pg) = $this->searchCustomers();
         // dd($pg);
-
         // dd($customers);
 
+        // if($pg === 25){
+        //     return to_route('customers.index')
+        //     ->with([
+        //         'message' => '該当者なし。',
+        //         'status' => 'danger'
+        //     ]);
+        // }
+
         return Inertia::render('Customers/Index',[
-            'customers' => $customers
+            'customers' => $customers,
+            'tel' => session('tel'),
+            'sname' => session('sname'),
+            'fname' => session('fname'),
+            'sruby' => session('sruby'),
+            'fruby' => session('fruby'),
+            'post' => session('post'),
+            'address' => session('address'),
+            'temple' => session('temple'),
+            'grave' => session('grave'),
+            'repair' => session('repair'),
+            'baltar' => session('baltar'),
+            'bafittings' => session('bafittings'),
+            'memo' => session('memo'),
         ]);
     }
 

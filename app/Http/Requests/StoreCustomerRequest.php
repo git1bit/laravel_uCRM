@@ -24,15 +24,15 @@ class StoreCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'm_name' => ['required', 'max:20'],
-            'tel1' => ['required', 'numeric'],
+            'm_name' => ['nullable', 'max:20'],
+            'tel1' => ['nullable', 'numeric'],
             'tel2' => ['nullable', 'numeric'],
-            'postcode' => ['required', 'max:7'],
-            'address1' => ['required', 'max:255'],
+            'postcode' => ['nullable', 'max:7'],
+            'address1' => ['nullable', 'max:255'],
             'address2' => ['nullable', 'max:255'],
             'temple' => ['nullable', 'max:255'],
             's_name1' => ['required', 'max:20'],
-            'f_name1' => ['required', 'max:20'],
+            'f_name1' => ['nullable', 'max:20'],
             's_ruby1' => ['nullable', 'regex:/^[ァ-ヾ]+$/u', 'max:50'],
             'f_ruby1' => ['nullable', 'regex:/^[ァ-ヾ]+$/u', 'max:50'],
             's_name2' => ['nullable', 'max:20'],
