@@ -84,95 +84,95 @@
                           <form @submit.prevent="storeCustomer">
                           <div class="container px-5 py-8 mx-auto">
                             <div class="w-full">
-                              <div class="w-1/4 block float-right mr-20">
-                                <label for="m_name" class="leading-7 text-sm text-blue-800">担当者</label>
+                              <div class="w-1/4 block float-right mr-9">
+                                <div class="-mb-1"><label for="m_name" class="leading-3 text-sm text-blue-800">担当者</label></div>
                                 <input type="text" id="m_name" name="m_name" v-model="form.m_name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                               </div>
                               <div class="clear-both"></div>
                             </div>
                             <!--<div class="lg:w-1/2 md:w-2/3 mx-auto">-->
                             <div class="w-1/2 inline-block clear-both">
-                              <div class="flex flex-wrap -m-2 p-2">
+                              <div class="flex flex-wrap -m-2 p-2 pr-10">
                                 <div class="p-2 w-full">
                                   <div class="relative">
-                                    <label class="leading-7 text-sm text-blue-800">電話番号</label><br>
-                                    <span class="text-blue-800">1</span> <input type="text" id="tel1" name="tel1" v-model="form.tel1" class="w-3/5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"><br>
-                                    <span class="text-blue-800">2</span> <input type="text" id="tel2" name="tel2" v-model="form.tel2" class="w-3/5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <div class="-mb-2"><label class="leading-3 text-sm text-blue-800">電話番号<span class="text-red-800">「-」無し</span></label></div>
+                                    <span class="text-blue-800">1　</span> <input type="text" id="tel1" name="tel1" v-model="form.tel1" class="w-2/3 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 my-1 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"><br>
+                                    <span class="text-blue-800">2　</span> <input type="text" id="tel2" name="tel2" v-model="form.tel2" class="w-2/3 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 my-1 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
-                                <div class="p-2 w-1/2">
+                                <div class="p-2 w-1/2 mt-1">
                                   <div class="relative">
-                                    <label for="postcode" class="leading-7 text-sm text-blue-800">郵便番号</label><br>
+                                    <div class="-mb-1"><label for="postcode" class="leading-3 text-sm text-blue-800">郵便番号<span class="text-red-800">「-」無し</span></label></div>
                                     <input type="text" id="postcode" name="postcode" @change="fetchAddress" v-model="form.postcode" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
-                                <div class="p-2 w-full">
+                                <div class="p-2 w-full mt-1">
                                   <div class="relative">
-                                    <label for="address1" class="leading-7 text-sm text-blue-800">住所</label><br>
+                                    <div class="-mb-1"><label for="address1" class="leading-3 text-sm text-blue-800">住所</label></div>
                                     <input type="text" id="address1" name="address1" v-model="form.address1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
-                                <div class="p-2 w-full">
+                                <div class="p-2 w-full mt-1">
                                   <div class="relative">
-                                    <label for="address2" class="leading-7 text-sm text-blue-800">番地</label><br>
+                                    <div class="-mb-1"><label for="address2" class="leading-3 text-sm text-blue-800">番地</label></div>
                                     <input type="text" id="address2" name="address2" v-model="form.address2" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
-                                <div class="p-2 w-full">
+                                <div class="p-2 w-full mt-1">
                                   <div class="relative">
-                                    <label for="temple" class="leading-7 text-sm text-blue-800">霊園・寺院名</label><br>
+                                    <div class="-mb-1"><label for="temple" class="leading-3 text-sm text-blue-800">霊園・寺院名</label></div>
                                     <input type="text" id="temple" name="temple" v-model="form.temple" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
                               </div>
                             </div>
                             <div class="w-1/2 inline-block">
-                              <div class="flex flex-wrap -m-2 p-2">
+                              <div class="flex flex-wrap -m-2 p-1 pl-10">
                                 <div class="p-2 w-full">
                                   <div class="relative">
-                                    <label class="leading-7 text-sm text-blue-800">お名前1</label><br>
-                                    <input type="text" id="s_name1" name="s_name1" v-model="form.s_name1" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                    <input type="text" id="f_name1" name="f_name1" v-model="form.f_name1" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> 様
+                                    <div class="-mb-2"><label class="leading-3 text-sm text-blue-800">お名前1</label></div>
+                                    <input type="text" id="s_name1" name="s_name1" v-model="form.s_name1" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="f_name1" name="f_name1" v-model="form.f_name1" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">　様
                                   </div>
                                 </div>
                                 <div class="p-2 -mt-4 w-full">
                                   <div class="relative">
-                                    <label class="leading-7 text-sm text-blue-800">フリガナ1</label><br>
-                                    <input type="text" id="s_ruby1" name="s_ruby1" v-model="form.s_ruby1" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                    <input type="text" id="f_ruby1" name="f_ruby1" v-model="form.f_ruby1" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> 様
+                                    <div class="-mb-2"><label class="leading-3 text-sm text-blue-800">フリガナ1</label></div>
+                                    <input type="text" id="s_ruby1" name="s_ruby1" v-model="form.s_ruby1" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="f_ruby1" name="f_ruby1" v-model="form.f_ruby1" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">　様
                                   </div>
                                 </div>
                                 <div class="p-2 my-2 w-full">
                                   <div class="relative">
-                                    <label class="leading-7 text-sm text-blue-800">お名前2</label><br>
-                                    <input type="text" id="s_name2" name="s_name2" v-model="form.s_name2" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                    <input type="text" id="f_name2" name="f_name2" v-model="form.f_name2" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> 様
+                                    <div class="-mb-2"><label class="leading-3 text-sm text-blue-800">お名前2</label></div>
+                                    <input type="text" id="s_name2" name="s_name2" v-model="form.s_name2" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="f_name2" name="f_name2" v-model="form.f_name2" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">　様
                                   </div>
                                 </div>
                                 <div class="p-2 -mt-6 w-full">
                                   <div class="relative">
-                                    <label class="leading-7 text-sm text-blue-800">フリガナ2</label><br>
-                                    <input type="text" id="s_ruby2" name="s_ruby2" v-model="form.s_ruby2" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                    <input type="text" id="f_ruby2" name="f_ruby2" v-model="form.f_ruby2" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> 様
+                                    <div class="-mb-2"><label class="leading-3 text-sm text-blue-800">フリガナ2</label></div>
+                                    <input type="text" id="s_ruby2" name="s_ruby2" v-model="form.s_ruby2" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="f_ruby2" name="f_ruby2" v-model="form.f_ruby2" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">　様
                                   </div>
                                 </div>
                                 <div class="p-2 my-2 w-full">
                                   <div class="relative">
-                                    <label class="leading-7 text-sm text-blue-800">お名前3</label><br>
-                                    <input type="text" id="s_name3" name="s_name3" v-model="form.s_name3" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                    <input type="text" id="f_name3" name="f_name3" v-model="form.f_name3" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> 様
+                                    <div class="-mb-2"><label class="leading-3 text-sm text-blue-800">お名前3</label></div>
+                                    <input type="text" id="s_name3" name="s_name3" v-model="form.s_name3" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="f_name3" name="f_name3" v-model="form.f_name3" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">　様
                                   </div>
                                 </div>
                                 <div class="p-2 -mt-6 w-full">
                                   <div class="relative">
-                                    <label class="leading-7 text-sm text-blue-800">フリガナ3</label><br>
-                                    <input type="text" id="s_ruby3" name="s_ruby3" v-model="form.s_ruby3" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                    <input type="text" id="f_ruby3" name="f_ruby3" v-model="form.f_ruby3" class="w-2/5 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> 様
+                                    <div class="-mb-2"><label class="leading-3 text-sm text-blue-800">フリガナ3</label></div>
+                                    <input type="text" id="s_ruby3" name="s_ruby3" v-model="form.s_ruby3" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="f_ruby3" name="f_ruby3" v-model="form.f_ruby3" class="w-5/12 m-1 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">　様
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <div class="w-full">
+                            <div class="w-full mt-7">
                               <table class="w-full">
                                 <thead>
                                   <tr>
@@ -190,19 +190,19 @@
                                     </th>
                                   </tr>
                                 </thead>
-                                <tbody>
-                                  <tr>
+                                <tbody class="">
+                                  <tr class="">
                                     <td class="px-2 py-1">
-                                      <input type="text" id="grave1" name="grave1" v-model="form.grave1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                      <input type="text" id="grave1" name="grave1" v-model="form.grave1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mt-1">
                                     </td>
                                     <td class="px-2 py-1">
-                                      <input type="text" id="repair1" name="repair1" v-model="form.repair1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                      <input type="text" id="repair1" name="repair1" v-model="form.repair1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mt-1">
                                     </td>
                                     <td class="px-2 py-1">
-                                      <input type="text" id="baltar1" name="baltar1" v-model="form.baltar1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                      <input type="text" id="baltar1" name="baltar1" v-model="form.baltar1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mt-1">
                                     </td>
                                     <td class="px-2 py-1">
-                                      <input type="text" id="bafittings1" name="bafittings1" v-model="form.bafittings1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                      <input type="text" id="bafittings1" name="bafittings1" v-model="form.bafittings1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mt-1">
                                     </td>
                                   </tr>
                                   <tr>
@@ -277,15 +277,15 @@
                                   </tr>
                                 </tbody>
                               </table>
-                                <div class="p-2 w-full">
+                                <div class="p-2 w-full mt-7">
                                   <div class="relative">
-                                    <div class=" bg-blue-700 text-white rounded p-3"><label for="memo" class="leading-7 font-bold">備考</label></div>
+                                    <div class=" bg-blue-700 text-white rounded p-3 pl-5 mb-2"><label for="memo" class="leading-7 font-bold">備考</label></div>
                                     
                                     <textarea id="memo" name="memo" v-model="form.memo" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                   </div>
                                 </div>
                                 <div class="p-2 w-full">
-                                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録</button>
+                                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-14 focus:outline-none hover:bg-indigo-600 rounded text-lg">登録</button>
                                 </div>
                             </div>
                           </div>
@@ -298,4 +298,5 @@
       </BreezeAuthenticatedLayout>
   </template>
   
-  <css></css>
+  <css>
+  </css>

@@ -3,10 +3,12 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\CustomerController;
 
-
+// Route::get('download', 'CsvController@download')->name('download.index');
+Route::get('/download-csv', [\App\Http\Controllers\Controller::class, 'downloadCsv'])->name('download-csv');
 
 Route::resource('customers', CustomerController::class)
 ->middleware(['auth', 'verified']);

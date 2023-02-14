@@ -25,9 +25,12 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         
-                        <Link v-if="$page.props.auth.user.admin === 1" as="button" :href="route('customers.create')" class="flex justify-evenly mx-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded w-40">新規登録</Link><br><br>
+                        <Link v-if="$page.props.auth.user.admin === 1" as="button" :href="route('customers.create')" class="flex justify-evenly mx-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded w-40">新規登録</Link><br>
 
-                        <Link as="button" :href="route('customers.index')" class="flex justify-evenly mx-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded w-40">お客様一覧</Link>
+                        <Link as="button" :href="route('customers.index')" class="flex justify-evenly mx-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded w-40">お客様一覧</Link><br><br>
+
+                        <!-- <Link as="button" :href="route('download-csv')" class="flex justify-evenly mx-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded w-40">データバックアップ</Link> -->
+                        <a href="/download-csv" class="flex justify-evenly mx-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded w-40 mt-10">バックアップ</a>
                     </div>
                 </div>
             </div>
